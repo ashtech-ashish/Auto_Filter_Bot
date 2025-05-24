@@ -312,7 +312,7 @@ Nᴀᴍᴇ : {}
 
 Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     
-    CAPTION = """<b>{file_name}</b>\n\n<b>⚡️ Powered By : 「 @beCinephile 」</a></b>"""
+    CAPTION = """<b>{file_caption}\n⚡️ Powered By : 「 @beCinephile 」</b>"""
 
     IMDB_TEMPLATE_TXT = """
 <b>🏷 Title</b>: <a href={url}>{title}</a>
