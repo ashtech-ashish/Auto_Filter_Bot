@@ -251,7 +251,7 @@ async def start(client, message):
         except Exception as e:
             await log_error(client, f"Got Error In Verification Funtion.\n\n Error - {e}")
             print(f"Error In Verification - {e}")
-            await message.reply_text(f"Something Want Wrong ! Message Here - @SilentXBotz_Support")
+            await message.reply_text(f"Something Went Wrong !")
 
     if data.split("-", 1)[0] == "BATCH":
         sts = await message.reply("<b>Please wait...</b>")
@@ -285,12 +285,12 @@ async def start(client, message):
 
             if STREAM_MODE:
                 btn = [
-                    [InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', callback_data=f'streamfile:{file_id}')],
-                    [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+                    [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+                    [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
                 ]
             else:
                 btn = [
-                    [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+                    [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
                 ]
             try:
                 await client.send_cached_media(
@@ -387,12 +387,12 @@ async def start(client, message):
                 f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files1.file_name.split()))}"
             if STREAM_MODE:
                 btn = [
-                    [InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', callback_data=f'streamfile:{file_id}')],
-                    [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]  
+                    [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+                    [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]  
                 ]
             else:
                 btn = [
-                    [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+                    [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
                 ]
             msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
@@ -402,11 +402,11 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             filesarr.append(msg)
-        k = await client.send_message(chat_id=message.from_user.id, text=f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\nᴛʜɪꜱ ᴍᴏᴠɪᴇ ꜰɪʟᴇ/ᴠɪᴅᴇᴏ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ɪɴ <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>(ᴅᴜᴇ ᴛᴏ ᴄᴏᴘʏʀɪɢʜᴛ ɪꜱꜱᴜᴇꜱ)</i>.\n\n<b><i>ᴘʟᴇᴀꜱᴇ ꜰᴏʀᴡᴀʀᴅ ᴛʜɪꜱ ꜰɪʟᴇ ᴛᴏ ꜱᴏᴍᴇᴡʜᴇʀᴇ ᴇʟꜱᴇ ᴀɴᴅ ꜱᴛᴀʀᴛ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛʜᴇʀᴇ</i></b>")
+        k = await client.send_message(chat_id=message.from_user.id, text=f"<b><blockquote>IMPORTANT ‣</blockquote></b>\n\nYour requested file will be automatically deleted in <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>(ᴅᴜᴇ ᴛᴏ ᴄᴏᴘʏʀɪɢʜᴛ ɪꜱꜱᴜᴇꜱ)</i>.\n\n<b><i>Please forward the file to your saved messages before downloading..!</i></b>")
         await asyncio.sleep(DELETE_TIME)
         for x in filesarr:
             await x.delete()
-        await k.edit_text("<b>ʏᴏᴜʀ ᴀʟʟ ᴠɪᴅᴇᴏꜱ/ꜰɪʟᴇꜱ ᴀʀᴇ ᴅᴇʟᴇᴛᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ !\nᴋɪɴᴅʟʏ ꜱᴇᴀʀᴄʜ ᴀɢᴀɪɴ</b>")
+        await k.edit_text("<b>All your requested files have been deleted successfully..!\nKindly SEARCH again</b>")
         return
 
     user = message.from_user.id
@@ -416,13 +416,13 @@ async def start(client, message):
         try:
             if STREAM_MODE:
                 btn = [
-                    [InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', callback_data=f'streamfile:{file_id}')],
-                    [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+                    [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+                    [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
              
                 ]
             else:
                 btn = [
-                    [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+                    [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
                 ]
             msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
@@ -444,15 +444,15 @@ async def start(client, message):
                     return
             await msg.edit_caption(f_caption)
             k = await msg.reply(
-                f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\n"
-                f"ᴛʜɪꜱ ᴍᴏᴠɪᴇ ꜰɪʟᴇ/ᴠɪᴅᴇᴏ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ɪɴ <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>"
+                f"<b><blockquote>IMPORTANT ‣</blockquote></b>\n\n"
+                f"Your requested file will be automatically deleted in <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>"
                 "(ᴅᴜᴇ ᴛᴏ ᴄᴏᴘʏʀɪɢʜᴛ ɪꜱꜱᴜᴇꜱ)</i>.\n\n"
-                "<b><i>ᴘʟᴇᴀꜱᴇ ꜰᴏʀᴡᴀʀᴅ ᴛʜɪꜱ ꜰɪʟᴇ ᴛᴏ ꜱᴏᴍᴇᴡʜᴇʀᴇ ᴇʟꜱᴇ ᴀɴᴅ ꜱᴛᴀʀᴛ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛʜᴇʀᴇ</i></b>",
+                "<b><i>Please forward the file to your saved messages before downloading..!</i></b>",
                 quote=True
             )
             await asyncio.sleep(DELETE_TIME)
             await msg.delete()
-            await k.edit_text("<b>ʏᴏᴜʀ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ ɪꜱ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ !!</b>")
+            await k.edit_text("<b>Your Requested File has been successfully deleted..!!!</b>")
             return
         except:
             pass
@@ -475,12 +475,12 @@ async def start(client, message):
         f_caption = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))
     if STREAM_MODE:
         btn = [
-            [InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🖥️', callback_data=f'streamfile:{file_id}')],
-            [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+            [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+            [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
         ]
     else:
         btn = [
-            [InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=UPDATE_CHANNEL_LNK)]
+            [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
         ]
     msg = await client.send_cached_media(
         chat_id=message.from_user.id,
@@ -490,15 +490,15 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
     k = await msg.reply(
-        f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\n"
-        f"ᴛʜɪꜱ ᴍᴏᴠɪᴇ ꜰɪʟᴇ/ᴠɪᴅᴇᴏ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ɪɴ <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>"
+        f"<b><blockquote>IMPORTANT ‣</blockquote></b>\n\n"
+        f"Your requested file will be automatically deleted in <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>"
         "(ᴅᴜᴇ ᴛᴏ ᴄᴏᴘʏʀɪɢʜᴛ ɪꜱꜱᴜᴇꜱ)</i>.\n\n"
-        "<b><i>ᴘʟᴇᴀꜱᴇ ꜰᴏʀᴡᴀʀᴅ ᴛʜɪꜱ ꜰɪʟᴇ ᴛᴏ ꜱᴏᴍᴇᴡʜᴇʀᴇ ᴇʟꜱᴇ ᴀɴᴅ ꜱᴛᴀʀᴛ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛʜᴇʀᴇ</i></b>",
+        "<b><i>Please forward the file to your saved messages before downloading..!</i></b>",
         quote=True
     )     
     await asyncio.sleep(DELETE_TIME)
     await msg.delete()
-    await k.edit_text("<b>ʏᴏᴜʀ ᴠɪᴅᴇᴏ / ꜰɪʟᴇ ɪꜱ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ !!</b>")
+    await k.edit_text("<b>Your Requested File has been successfully deleted..!!!</b>")
     return
 
 @Client.on_message(filters.command('logs') & filters.user(ADMINS))
@@ -976,7 +976,7 @@ async def trendlist(client, message):
     formatted_list = "\n".join([f"{i+1}. <b>{msg}</b>" for i, msg in enumerate(truncated_messages)])
     additional_message = "⚡️ 𝑨𝒍𝒍 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕𝒔 𝒂𝒃𝒐𝒗𝒆 𝒄𝒐𝒎𝒆 𝒇𝒓𝒐𝒎 𝒘𝒉𝒂𝒕 𝒖𝒔𝒆𝒓𝒔 𝒉𝒂𝒗𝒆 𝒔𝒆𝒂𝒓𝒄𝒉𝒆𝒅 𝒇𝒐𝒓. 𝑻𝒉𝒆𝒚'𝒓𝒆 𝒔𝒉𝒐𝒘𝒏 𝒕𝒐 𝒚𝒐𝒖 𝒆𝒙𝒂𝒄𝒕𝒍𝒚 𝒂𝒔 𝒕𝒉𝒆𝒚 𝒘𝒆𝒓𝒆 𝒔𝒆𝒂𝒓𝒄𝒉𝒆𝒅, 𝒘𝒊𝒕𝒉𝒐𝒖𝒕 𝒂𝒏𝒚 𝒄𝒉𝒂𝒏𝒈𝒆𝒔 𝒃𝒚 𝒕𝒉𝒆 𝒐𝒘𝒏𝒆𝒓."
     formatted_list += f"\n\n{additional_message}"
-    reply_text = f"<b>Top {len(truncated_messages)} Tʀᴀɴᴅɪɴɢ ᴏғ ᴛʜᴇ ᴅᴀʏ 👇:</b>\n\n{formatted_list}"
+    reply_text = f"<b>Top {len(truncated_messages)} Tʀᴇɴᴅɪɴɢ ᴏғ ᴛʜᴇ ᴅᴀʏ 👇:</b>\n\n{formatted_list}"
     await message.reply_text(reply_text)
 
 @Client.on_message(filters.private & filters.command("pm_search") & filters.user(ADMINS))
