@@ -143,6 +143,7 @@ class Database:
             'verify_time': TWO_VERIFY_GAP,
             'third_verify_time': THREE_VERIFY_GAP,
             'caption': CUSTOM_FILE_CAPTION,
+            'fsub': MULTI_FSUB,
             'fsub_id': AUTH_CHANNEL
         }
         chat = await self.grp.find_one({'id':int(id)})
