@@ -208,28 +208,6 @@ async def start(client, message):
         await log_error(client, f"Got Error In Force Subscription Funtion.\n\n Error - {e}")
         print(f"Error In Fsub :- {e}")
 
-    if not await db.has_premium_access(message.from_user.id):
-        channels = (await get_settings(int(message.from_user.id))).get('fsub')
-        if channels:  
-            btn = await is_multi_subscribed(client, message, channels)
-            if btn:
-                kk, file_id = message.command[1].split("_", 1)
-                btn.append([InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", callback_data=f"checksub#{kk}#{file_id}")])
-                reply_markup = InlineKeyboardMarkup(btn)
-                caption = (
-                    f"👋 Hello {message.from_user.mention}\n\n"
-                    "Please join all Updates Channels by clicking the buttons below.\n"
-                    "Once done, try again.\n\n"
-                    "सभी Updates Channels को जॉइन करें, फिर से प्रयास करें।"
-                )
-                await message.reply_photo(
-                    photo=random.choice(FSUB_IMG),
-                    caption=caption,
-                    reply_markup=reply_markup,
-                    parse_mode=enums.ParseMode.HTML
-                )
-                return
-                
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
         try:

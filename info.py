@@ -54,10 +54,8 @@ OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/becinecontact_bot')
 UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/becinephile')
 
 #Force Subscription Channel (Put Same Channel Id In Both Veriables)
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '')) 
-AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', ''))
-#Multiple force sub
-MULTI_FSUB = [int(channel_id) for channel_id in environ.get('MULTI_FSUB', '-1001443255396').split() if re.match(r'^-?\d+$', channel_id)]
+AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1001443255396')) 
+AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1001443255396'))
 
 IS_VERIFY = is_enabled('IS_VERIFY', True)
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002679083488')) #Verification Channel Id 

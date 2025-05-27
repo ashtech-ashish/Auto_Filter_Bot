@@ -78,20 +78,6 @@ async def is_subscribed(bot, user_id, channel_id):
             return True
     return False
     
-async def is_multi_subscribed(bot, query, channels):
-    btn = []
-    for channel_id in channels:
-        try:
-            chat = await bot.get_chat(int(channel_id))
-            await bot.get_chat_member(channel_id, query.from_user.id)
-        except UserNotParticipant:
-            btn.append(
-                [InlineKeyboardButton(f'❤️ {chat.title}', url=chat.invite_link)]
-            )
-        except Exception as e:
-            pass
-    return btn
-
 async def is_check_admin(bot, chat_id, user_id):
     try:
         member = await bot.get_chat_member(chat_id, user_id)
