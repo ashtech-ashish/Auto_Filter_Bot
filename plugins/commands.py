@@ -91,13 +91,10 @@ async def start(client, message):
         buttons = [[
                     InlineKeyboardButton('+ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ +', url=f'http://telegram.me/{temp.U_NAME}?startgroup=true')
                 ],[
-                    InlineKeyboardButton('• ᴛᴏᴘ •', callback_data="topsearch"),
-                    InlineKeyboardButton('• ᴜᴘɢʀᴀᴅᴇ •', callback_data="premium"),
-                ],[
                     InlineKeyboardButton('• ʜᴇʟᴘ •', callback_data='features'),
                     InlineKeyboardButton('• ᴀʙᴏᴜᴛ •', callback_data='bot')
                 ],[
-                    InlineKeyboardButton('• ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ •', callback_data="earn")
+                    InlineKeyboardButton('○ ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ ○', url='https://t.me/beCinephile/875')
                 ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -172,10 +169,10 @@ async def start(client, message):
                     print("Bot Ko AUTH_CHANNEL Per Admin Bana Bhai Pahile 🤧")
                     return
                 btn = [[
-                    InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
+                    InlineKeyboardButton(" ᴊᴏɪɴ ɴᴏᴡ ", url=invite_link.invite_link)
                 ]]
                 if message.command[1] != "subscribe":
-                    btn.append([InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
+                    btn.append([InlineKeyboardButton("♻ ᴛʀʏ ᴀɢᴀɪɴ ♻", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
                 await client.send_photo(
                     chat_id=message.from_user.id,
                     photo=random.choice(FSUB_IMG),
@@ -191,10 +188,10 @@ async def start(client, message):
             if settings.get('fsub_id', AUTH_CHANNEL) and not await is_subscribed(client, message.from_user.id, channel):
                 invite_link = await client.create_chat_invite_link(channel)
                 btn = [[
-                        InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
+                        InlineKeyboardButton(" ᴊᴏɪɴ ɴᴏᴡ ", url=invite_link.invite_link)
                       ]]
                 if message.command[1] != "subscribe":
-                    btn.append([InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
+                    btn.append([InlineKeyboardButton("♻ ᴛʀʏ ᴀɢᴀɪɴ ♻", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
                 await client.send_photo(
                     chat_id=message.from_user.id,
                     photo=random.choice(FSUB_IMG),
@@ -229,9 +226,9 @@ async def start(client, message):
                 else:
                     howtodownload = settings.get('tutorial_2', TUTORIAL_2) if is_second_shortener else settings.get('tutorial', TUTORIAL)
                 buttons = [[
-                    InlineKeyboardButton(text="♻️ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴠᴇʀɪꜰʏ ♻️", url=verify)
+                    InlineKeyboardButton(text="♻ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴠᴇʀɪꜰʏ ♻", url=verify)
                 ],[
-                    InlineKeyboardButton(text="⁉️ ʜᴏᴡ ᴛᴏ ᴠᴇʀɪꜰʏ ⁉️", url=howtodownload)
+                    InlineKeyboardButton(text="⁉ ʜᴏᴡ ᴛᴏ ᴠᴇʀɪꜰʏ ⁉", url=howtodownload)
                 ]]
                 reply_markup=InlineKeyboardMarkup(buttons)
                 if await db.user_verified(user_id): 
