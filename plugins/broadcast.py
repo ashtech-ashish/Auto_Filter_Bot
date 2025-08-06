@@ -150,7 +150,7 @@ async def junk_clear_group(bot, message):
 
 async def broadcast_messages_group(chat_id, message):
     try:
-        await message.forward(chat_id=chat_id)
+        await message.copy(chat_id=chat_id)
         return True, "Succes", 'mm'
     except FloodWait as e:
         await asyncio.sleep(e.value)
@@ -162,7 +162,7 @@ async def broadcast_messages_group(chat_id, message):
     
 async def junk_group(chat_id, message):
     try:
-        kk = await message.forward(chat_id=chat_id)
+        kk = await message.copy(chat_id=chat_id)
         await kk.delete(True)
         return True, "Succes", 'mm'
     except FloodWait as e:
@@ -176,7 +176,7 @@ async def junk_group(chat_id, message):
 
 async def clear_junk(user_id, message):
     try:
-        key = await message.forward(chat_id=user_id)
+        key = await message.copy(chat_id=user_id)
         await key.delete(True)
         return True, "Success"
     except FloodWait as e:
@@ -198,7 +198,7 @@ async def clear_junk(user_id, message):
 
 async def broadcast_messages(user_id, message, reply_markup=None):
     try:
-        await message.forward(chat_id=user_id,reply_markup=reply_markup)
+        await message.copy(chat_id=user_id,reply_markup=reply_markup)
         return True, "Success"
     except FloodWait as e:
         await asyncio.sleep(e.value)
