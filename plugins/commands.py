@@ -63,7 +63,7 @@ async def start(client, message):
             verifiedfiles = f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"
         await client.send_message(settings['log'], script.VERIFIED_LOG_TEXT.format(m.from_user.mention, user_id, datetime.now(pytz.timezone('Asia/Kolkata')).strftime('%d %B %Y'), num))
         btn = [[
-            InlineKeyboardButton("✅ ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ ✅", url=verifiedfiles),
+            InlineKeyboardButton("🔁 ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ꜰɪʟᴇ 🔁", url=verifiedfiles),
         ]]
         reply_markup=InlineKeyboardMarkup(btn)
         dlt=await m.reply_photo(
@@ -441,15 +441,13 @@ async def start(client, message):
                     return
             await msg.edit_caption(f_caption)
             k = await msg.reply(
-                f"<b><blockquote>IMPORTANT ‣</blockquote></b>\n\n"
-                f"Your requested file will be automatically deleted in <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>"
-                "(ᴅᴜᴇ ᴛᴏ ᴄᴏᴘʏʀɪɢʜᴛ ɪꜱꜱᴜᴇꜱ)</i>.\n\n"
-                "<b><i>Please forward the file to your saved messages before downloading..!</i></b>",
+                f"<b>Note ‣</b>\n<i>Your above messages will be automatically deleted in <b>{get_time(DELETE_TIME)}</b> due to copyright issues.</i>\n"
+                "<b><i>Please save or forward them to your saved messages before downloading..!</i></b>",
                 quote=True
             )
             await asyncio.sleep(DELETE_TIME)
             await msg.delete()
-            await k.edit_text("<b>Your Requested File has been successfully deleted..!!!</b>")
+            await k.edit_text("<b>Your requested file has been deleted. You can get again.</b>")
             return
         except:
             pass
@@ -487,15 +485,13 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
     k = await msg.reply(
-        f"<b><blockquote>IMPORTANT ‣</blockquote></b>\n\n"
-        f"Your requested file will be automatically deleted in <b><u><code>{get_time(DELETE_TIME)}</code></u> 🫥 <i></b>"
-        "(ᴅᴜᴇ ᴛᴏ ᴄᴏᴘʏʀɪɢʜᴛ ɪꜱꜱᴜᴇꜱ)</i>.\n\n"
-        "<b><i>Please forward the file to your saved messages before downloading..!</i></b>",
+        f"<b>Note ‣</b>\n<i>Your above messages will be automatically deleted in <b>{get_time(DELETE_TIME)}</b> due to copyright issues.</i>\n"
+                "<b><i>Please save or forward them to your saved messages before downloading..!</i></b>",
         quote=True
     )     
     await asyncio.sleep(DELETE_TIME)
     await msg.delete()
-    await k.edit_text("<b>Your Requested File has been successfully deleted..!!!</b>")
+    await k.edit_text("<b>Your requested file has been deleted. You can get again.</b>")
     return
 
 @Client.on_message(filters.command('logs') & filters.user(ADMINS))
