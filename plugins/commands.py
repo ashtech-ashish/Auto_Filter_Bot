@@ -282,7 +282,7 @@ async def start(client, message):
 
             if STREAM_MODE:
                 btn = [
-                    [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+                    [InlineKeyboardButton('○ Fast Download / Watch Online ○', callback_data=f'streamfile:{file_id}')],
                     [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
                 ]
             else:
@@ -384,7 +384,7 @@ async def start(client, message):
                 f_caption = f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files1.file_name.split()))}"
             if STREAM_MODE:
                 btn = [
-                    [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+                    [InlineKeyboardButton('○ Fast Download / Watch Online ○', callback_data=f'streamfile:{file_id}')],
                     [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]  
                 ]
             else:
@@ -413,7 +413,7 @@ async def start(client, message):
         try:
             if STREAM_MODE:
                 btn = [
-                    [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+                    [InlineKeyboardButton('○ Fast Download / Watch Online ○', callback_data=f'streamfile:{file_id}')],
                     [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
              
                 ]
@@ -441,13 +441,13 @@ async def start(client, message):
                     return
             await msg.edit_caption(f_caption)
             k = await msg.reply(
-                f"<b>Note ‣</b>\n<i>Your above messages will be automatically deleted in <b>{get_time(DELETE_TIME)}</b> due to copyright issues.</i>\n"
-                "<b><i>Please save or forward them to your saved messages before downloading..!</i></b>",
+                f"<b>Note ‣</b>\n<i>Your generated file(s) will be automatically deleted in <b>{get_time(DELETE_TIME)}</b> due to copyright issues.</i>\n"
+                "<b><i>Please save or forward them to your saved messages before downloading.</i></b>",
                 quote=True
             )
             await asyncio.sleep(DELETE_TIME)
             await msg.delete()
-            await k.edit_text("<b>Your requested file has been deleted. You can get again.</b>")
+            await k.edit_text("Your requested file has been deleted to avoid copyright!.")
             return
         except:
             pass
@@ -470,7 +470,7 @@ async def start(client, message):
         f_caption = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))
     if STREAM_MODE:
         btn = [
-            [InlineKeyboardButton('🚀 Fast Download / Watch Online 🖥️', callback_data=f'streamfile:{file_id}')],
+            [InlineKeyboardButton('○ Fast Download / Watch Online ○', callback_data=f'streamfile:{file_id}')],
             [InlineKeyboardButton('Join Our Channel', url=UPDATE_CHANNEL_LNK)]
         ]
     else:
@@ -485,13 +485,13 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(btn)
     )
     k = await msg.reply(
-        f"<b>Note ‣</b>\n<i>Your above messages will be automatically deleted in <b>{get_time(DELETE_TIME)}</b> due to copyright issues.</i>\n"
-                "<b><i>Please save or forward them to your saved messages before downloading..!</i></b>",
+        f"<b>Note ‣</b>\n<i>Your generated file(s) will be automatically deleted in <b>{get_time(DELETE_TIME)}</b> due to copyright issues.</i>\n"
+                "<b><i>Please save or forward them to your saved messages before downloading.</i></b>",
         quote=True
     )     
     await asyncio.sleep(DELETE_TIME)
     await msg.delete()
-    await k.edit_text("<b>Your requested file has been deleted. You can get again.</b>")
+    await k.edit_text("Your requested file has been deleted to avoid copyright!.")
     return
 
 @Client.on_message(filters.command('logs') & filters.user(ADMINS))
