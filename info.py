@@ -19,10 +19,10 @@ API_ID = int(environ.get('API_ID', ''))
 API_HASH = environ.get('API_HASH', '')
 BOT_TOKEN = environ.get('BOT_TOKEN', "")
 
-CACHE_TIME = int(environ.get('CACHE_TIME', 300))
+CACHE_TIME = int(environ.get('CACHE_TIME', 1800))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
-PICS = (environ.get('PICS', 'https://envs.sh/9Tg.jpg')).split() 
+PICS = (environ.get('PICS', 'https://envs.sh/9Tg.jpg https://envs.sh/dpT.jpg/HGBOTZ.jpg https://envs.sh/dlI.jpg/HGBOTZ.jpg https://envs.sh/dlA.jpg/HGBOTZ.jpg https://envs.sh/dlj.jpg/HGBOTZ.jpg')).split() 
 NOR_IMG = environ.get("NOR_IMG", "https://graph.org/file/62efbcc4e7580b76530ba.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://graph.org/file/e215d12bfd4fa2155e90e.mp4")
 SPELL_IMG = environ.get("SPELL_IMG", "https://graph.org/file/13702ae26fb05df52667c.jpg")
