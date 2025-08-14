@@ -64,7 +64,8 @@ async def check_db_size(db):
 async def save_file(bot, media):
     try:
         file_id, file_ref = unpack_new_file_id(media.file_id)
-        file_name = re.sub(r"[^\w\s.-]", " ", str(media.file_name)).strip()       
+        file_name = re.sub(r"[^\w\s.-]", " ", str(media.file_name)).strip()
+        file_caption = re.sub(r"@\w+|(_|\- |\.|\+|\[|\]| \[| \]\ )", " ", str(media.caption))
         if await Media.count_documents({'file_id': file_id}, limit=1):
             print(f'{file_name} exists in primary DB')
             return False, 0
@@ -85,7 +86,7 @@ async def save_file(bot, media):
                 file_size=media.file_size,
                 file_type=media.file_type,
                 mime_type=media.mime_type,
-                caption=media.caption.html if media.caption else None,
+                caption=file_caption if file_caption else None
             )
             await file.commit()
             print(f'Saved to {target_db.__name__}: {file_name}')
