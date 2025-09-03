@@ -19,9 +19,8 @@ async def broadcast(bot, message):
     deleted = 0
     failed =0
     success = 0
-    btn = InlineKeyboardMarkup([[InlineKeyboardButton(" Sᴇᴀʀᴄʜ ʜᴇʀᴇ", url=GRP_LNK)]])
     async for user in users:
-        pti, sh = await broadcast_messages(int(user['id']), b_msg, reply_markup=btn)
+        pti, sh = await broadcast_messages(int(user['id']), b_msg)
         if pti:
             success += 1
         elif pti == False:
@@ -196,13 +195,13 @@ async def clear_junk(user_id, message):
     except Exception as e:
         return False, "Error"
 
-async def broadcast_messages(user_id, message, reply_markup=None):
+async def broadcast_messages(user_id, message):
     try:
-        await message.copy(chat_id=user_id,reply_markup=reply_markup)
+        await message.copy(chat_id=user_id)
         return True, "Success"
     except FloodWait as e:
         await asyncio.sleep(e.value)
-        return await broadcast_messages(user_id, message,reply_markup=reply_markup)
+        return await broadcast_messages(user_id, message)
     except InputUserDeactivated:
         await db.delete_user(int(user_id))
         logging.info(f"{user_id}-Removed from Database, since deleted account.")
